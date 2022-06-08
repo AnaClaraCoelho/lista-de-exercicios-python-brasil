@@ -38,3 +38,13 @@ Mostre os valores monetórios com duas casas decimais..
 
 def calcular_estatisticas_colecao_de_cd():
     """Escreva aqui em baixo a sua solução"""
+    qtd_cds = int(input('Qual a quantidade de cds? '))
+    sum = 0
+    count = 0
+    print(f'Número de cds: {qtd_cds}')
+    while count < qtd_cds:
+        valor_cd = int(input('Informe o preço: '))
+        sum += valor_cd
+        count += 1
+    print(f'Valor total da coleção: R$ {sum :.2f}')
+    print(f'Custo médio dos cds: R$ {sum/qtd_cds :.2f}')
