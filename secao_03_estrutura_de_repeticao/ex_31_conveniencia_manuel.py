@@ -56,3 +56,38 @@ para registrar a próxima compra.
 
 def rodar_programa_de_caixa():
     """Escreva aqui em baixo a sua solução"""
+    sum = 0
+    preco = float(input('Preco do item: '))
+    if preco == -1:
+        print('Lojas Tabajara')
+        print('-------------------')
+        print('Programa encerrado!')
+    else:
+        sum += preco
+        while True:
+            preco = float(input('Preco do item: '))
+            if preco in (0,-1):
+                if preco == -1:
+                    print('Lojas Tabajara')
+                    dinheiro = float(input('Dinheiro: '))
+                    print(f'Total     : R$   {sum :.2f}')
+                    str_dinheiro = f'{dinheiro:.2f}'
+                    print(f'Dinheiro  : R${str_dinheiro.rjust(7)}')
+                    print(f'Troco     : R$   {dinheiro - sum :.2f}')
+                    print('-------------------')
+                    print('Programa encerrado!')
+                    break
+                else:
+                    print('Lojas Tabajara')
+                    dinheiro = float(input('Dinheiro: '))
+                    print(f'Total     : R$   {sum :.2f}')
+                    str_dinheiro = f'{dinheiro:.2f}'
+                    print(f'Dinheiro  : R${str_dinheiro.rjust(7)}')
+                    print(f'Troco     : R$   {dinheiro - sum :.2f}')
+                    print('-------------------')
+                    sum = 0
+            else:
+                sum += preco
+
+
+
