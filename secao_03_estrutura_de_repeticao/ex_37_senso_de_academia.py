@@ -53,6 +53,52 @@ da média das alturas e dos pesos dos clientes
 
 """
 
+def descobre_mais_alto():
+    mais_alto = 0
+    mais_baixo = 99999
+    nome_alto = None
+    nome_baixo = None
+    for (nome,altura,peso) in cadastro:
+        if altura > mais_alto:
+            mais_alto = altura
+            nome_alto = nome
+        if altura < mais_baixo:
+            mais_baixo = altura
+            nome_baixo = nome
+    return
 
+def descobre_mais_gordo()
+    mais_gordo = 0
+    mais_magro = 99999
+    nome_gordo = None
+    nome_magro = None
+    for (nome, altura, peso) in cadastro:
+        if peso > mais_gordo:
+            mais_gordo = peso
+            nome_gordo= nome
+        if peso < mais_magro:
+            mais_baixo = peso
+            nome_gordo = nome
+    return
+def descobrir_medias():
+    total_altura = 0
+    total_peso = 0
+    for (nome,altura,peso) in cadastro:
+        total_altura += altura
+        total_peso += peso
+    total_clientes = len(cadastro)
+    media_altura = total_altura/ total_clientes
+    media_peso = total_peso/ total_clientes
+    return (media_altura, media_peso)
 def rodar_senso():
     """Escreva aqui em baixo a sua solução"""
+    nome = []
+    altura = []
+    peso = []
+    while  input != 0:
+        nome.append(input('Nome: '))
+        altura.append(input('Altura: '))
+        peso.append(input('Peso: '))
+    print('--------------------------------------------------')
+    print(f'Media de altura dos clientes: {media_altura:.1f} centímetros')
+    print(f'Media de peso dos clientes: {media_peso:.1f} kilos')
