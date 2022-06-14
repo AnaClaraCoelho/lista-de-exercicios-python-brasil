@@ -31,10 +31,10 @@ def calcular_serie_de_fibonacci(n: int) -> str:
         for i in range(1, n-1):
             valor = (lista_fibonacci[-1] + lista_fibonacci[-2])
             lista_fibonacci.append(valor)
-        print("'", end='')
-        for i in lista_fibonacci[:-1]:
-            print(f"{i},", end=' ')
-        print(f"{lista_fibonacci[-1]}'", end='')
+        return ', '.join(str(fn) for fn in lista_fibonacci).strip()
+        # for i in lista_fibonacci[:-1]:
+        #     print(f"{i},", end=' ')
+        # print(f"{lista_fibonacci[-1]}'", end='')
     else:
         return f'{n}'
 

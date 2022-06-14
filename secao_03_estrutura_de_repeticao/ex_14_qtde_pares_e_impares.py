@@ -27,3 +27,6 @@ def calcular_qtde_numeros_pares_e_impares(n1: int, n2: int, n3: int, n4: int, n5
         else:
             impar += 1
     print(f"'Existem {par} números pares e {impar} números impares'")
+
+def test_1():
+    assert False
