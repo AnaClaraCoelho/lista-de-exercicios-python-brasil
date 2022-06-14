@@ -45,12 +45,14 @@ def listar_numeros_para_avaliacao():
     intervalos = {'zero a 25': 0, '26 a 50': 0, '51 a 75': 0, '76 a 100': 0}
     while n >= 0:
         n = input('Número: ')
-        if n > 0 and n < 25:
+        if n > 0 and n <= 25:
             intervalos['zero a 25'] += 1
-        elif n > 25 and n < 50:
+        elif n >= 26 and n <= 50:
             intervalos['26 a 50'] += 1
-        elif n > 50 and n <75:
+        elif n >= 51 and n <= 75:
             intervalos['51 a 75'] += 1
-        else:
+        elif n >= 76 and n <= 100:
             intervalos['76 a 100'] += 1
-    print(intervalos)
+    for keys, values in intervalos.items():
+        if values != 0:
+            print(f'{values} número(s) entre o intervalo de {keys}')
