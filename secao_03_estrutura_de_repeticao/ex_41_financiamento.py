@@ -32,3 +32,4 @@ Quantidade de Parcelas  % de Juros sobre o valor inicial da dívida
 
 def gerar_dados_de_financiamente(valor_inicial: float):
     """Escreva aqui em baixo a sua solução"""
+    print('Valor da Dívida Valor dos Juros Quantidade de Parcelas  Valor da Parcela')

@@ -109,3 +109,7 @@ comprados.
 
 def fechar_conta(*itens):
     """Escreva aqui em baixo a sua solução"""
+    print(f'_____________________________________________________________________________')
+    print(f'|                              RESUMO DA CONTA                              |')
+    print(f'|---------------------------------------------------------------------------|')
+    print(f'| Epecificação     | Código | Preço Unitário (R$) | Quantidade | Total (R$) |')
