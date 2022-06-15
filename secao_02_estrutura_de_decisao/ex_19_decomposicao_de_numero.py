@@ -52,75 +52,121 @@ Observando os termos no plural a colocação do "e", da vírgula entre outros. E
 
 def decompor_numero(numero: int):
     """Escreva aqui em baixo a sua solução"""
+    # if numero >= 1000:
+    #     return 'O número precisa ser menor que 1000'
+    # elif numero < 0:
+    #     return 'O número precisa ser positivo'
+    # else:
+    #     centenas = int(numero / 100)
+    #     dezenas = int((numero - centenas * 100)/10)
+    #     unidades = numero - centenas * 100 - dezenas * 10
+    #     if centenas != 0:
+    #         if centenas == 1:
+    #             if dezenas == 0:
+    #                 if unidades == 0:
+    #                     return f'{numero} = {centenas} centena'
+    #                 elif unidades == 1:
+    #                     return f'{numero} = {centenas} centena e {unidades} unidade'
+    #                 else:
+    #                     return f'{numero} = {centenas} centena e {unidades} unidades'
+    #             elif dezenas == 1:
+    #                 if unidades == 0:
+    #                     return f'{numero} = {centenas} centena e {dezenas} dezena'
+    #                 elif unidades == 1:
+    #                     return f'{numero} = {centenas} centena, {dezenas} dezena e {unidades} unidade'
+    #                 else:
+    #                     return f'{numero} = {centenas} centena, {dezenas} dezena e {unidades} unidades'
+    #             else:
+    #                 if unidades != 0:
+    #                     return f'{numero} = {centenas} centena, {dezenas} dezenas e {unidades} unidades'
+    #                 else:
+    #                     return f'{numero} = {centenas} centena e {dezenas} dezenas'
+    #         else:
+    #             if dezenas == 0:
+    #                 if unidades == 0:
+    #                     return f'{numero} = {centenas} centenas'
+    #                 elif unidades == 1:
+    #                     return f'{numero} = {centenas} centenas e {unidades} unidade'
+    #                 else:
+    #                     return f'{numero} = {centenas} centenas e {unidades} unidades'
+    #             elif dezenas == 1:
+    #                 if unidades == 0:
+    #                     return f'{numero} = {centenas} centenas e {dezenas} dezena'
+    #                 elif unidades == 1:
+    #                     return f'{numero} = {centenas} centenas, {dezenas} dezena e {unidades} unidade'
+    #                 else:
+    #                     return f'{numero} = {centenas} centenas e {dezenas} dezena'
+    #             else:
+    #                 if unidades != 0:
+    #                     return f'{numero} = {centenas} centenas, {dezenas} dezenas e {unidades} unidades'
+    #                 else:
+    #                     return f'{numero} = {centenas} centenas e {dezenas} dezenas'
+    #     else:
+    #         if dezenas == 0:
+    #             if unidades == 1:
+    #                 return f'{numero} = {unidades} unidade'
+    #             else:
+    #                 return f'{numero} = {unidades} unidades'
+    #         elif dezenas == 1:
+    #             if unidades == 0:
+    #                 return f'{numero} = {dezenas} dezena'
+    #             elif unidades == 1:
+    #                 return f'{numero} = {dezenas} dezena e {unidades} unidade'
+    #             else:
+    #                 return f'{numero} = {dezenas} dezena e {unidades} unidades'
+    #         else:
+    #             if unidades == 0:
+    #                 return f'{numero} = {dezenas} dezenas'
+    #             elif unidades == 1:
+    #                 return f'{numero} = {dezenas} dezenas e {unidades} unidade'
+    #             else:
+    #                 return f'{numero} = {dezenas} dezenas e {unidades} unidades'
+
+    numero_str = numero
     if numero >= 1000:
         return 'O número precisa ser menor que 1000'
+
     elif numero < 0:
         return 'O número precisa ser positivo'
     else:
-        centenas = int(numero / 100)
-        dezenas = int((numero - centenas * 100)/10)
-        unidades = numero - centenas * 100 - dezenas * 10
-        if centenas != 0:
-            if centenas == 1:
-                if dezenas == 0:
-                    if unidades == 0:
-                        return f'{numero} = {centenas} centena'
-                    elif unidades == 1:
-                        return f'{numero} = {centenas} centena e {unidades} unidade'
-                    else:
-                        return f'{numero} = {centenas} centena e {unidades} unidades'
-                elif dezenas == 1:
-                    if unidades == 0:
-                        return f'{numero} = {centenas} centena e {dezenas} dezena'
-                    elif unidades == 1:
-                        return f'{numero} = {centenas} centena, {dezenas} dezena e {unidades} unidade'
-                    else:
-                        return f'{numero} = {centenas} centena, {dezenas} dezena e {unidades} unidades'
-                else:
-                    if unidades != 0:
-                        return f'{numero} = {centenas} centena, {dezenas} dezenas e {unidades} unidades'
-                    else:
-                        return f'{numero} = {centenas} centena e {dezenas} dezenas'
+        centenas_str = dezenas_str = unidades_str = ''
+
+        centenas_int, numero = divmod(numero, 100)
+        partes_numericas = 0
+        if centenas_int == 1:
+            centenas_str = '1 centena'
+            partes_numericas += 1
+        elif centenas_int > 1:
+            centenas_str = f'{centenas_int} centenas'
+            partes_numericas += 1
+
+        dezenas_int, numero = divmod(numero,10)
+        if dezenas_int == 1:
+            dezenas_str = '1 dezena'
+            partes_numericas += 1
+        elif dezenas_int > 1:
+            dezenas_str = f'{dezenas_int} dezenas'
+            partes_numericas += 1
+
+        if numero ==1:
+            unidades_str = '1 unidade'
+            partes_numericas += 1
+        elif numero > 1:
+            unidades_str = f'{numero} unidades'
+            partes_numericas += 1
+        if partes_numericas == 0:
+            return 'Número 0 não possui centenas, dezenas ou unidades'
+        elif partes_numericas == 1:
+            return f'{numero_str} = {centenas_str + dezenas_str + unidades_str}'
+        elif partes_numericas == 3:
+            return f'{numero_str} = {centenas_str}, {dezenas_str} e {unidades_str}'
+        elif partes_numericas == 2:
+            if centenas_str != '':
+                segunda_parte = dezenas_str + unidades_str
+                return f'{numero_str} = {centenas_str} e {segunda_parte}'
             else:
-                if dezenas == 0:
-                    if unidades == 0:
-                        return f'{numero} = {centenas} centenas'
-                    elif unidades == 1:
-                        return f'{numero} = {centenas} centenas e {unidades} unidade'
-                    else:
-                        return f'{numero} = {centenas} centenas e {unidades} unidades'
-                elif dezenas == 1:
-                    if unidades == 0:
-                        return f'{numero} = {centenas} centenas e {dezenas} dezena'
-                    elif unidades == 1:
-                        return f'{numero} = {centenas} centenas, {dezenas} dezena e {unidades} unidade'
-                    else:
-                        return f'{numero} = {centenas} centenas e {dezenas} dezena'
-                else:
-                    if unidades != 0:
-                        return f'{numero} = {centenas} centenas, {dezenas} dezenas e {unidades} unidades'
-                    else:
-                        return f'{numero} = {centenas} centenas e {dezenas} dezenas'
-        else:
-            if dezenas == 0:
-                if unidades == 1:
-                    return f'{numero} = {unidades} unidade'
-                else:
-                    return f'{numero} = {unidades} unidades'
-            elif dezenas == 1:
-                if unidades == 0:
-                    return f'{numero} = {dezenas} dezena'
-                elif unidades == 1:
-                    return f'{numero} = {dezenas} dezena e {unidades} unidade'
-                else:
-                    return f'{numero} = {dezenas} dezena e {unidades} unidades'
-            else:
-                if unidades == 0:
-                    return f'{numero} = {dezenas} dezenas'
-                elif unidades == 1:
-                    return f'{numero} = {dezenas} dezenas e {unidades} unidade'
-                else:
-                    return f'{numero} = {dezenas} dezenas e {unidades} unidades'
+                return f'{numero_str} = {dezenas_str} e {unidades_str}'
+
 
 
 
