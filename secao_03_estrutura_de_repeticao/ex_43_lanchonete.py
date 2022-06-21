@@ -113,3 +113,34 @@ def fechar_conta(*itens):
     print(f'|                              RESUMO DA CONTA                              |')
     print(f'|---------------------------------------------------------------------------|')
     print(f'| Epecificação     | Código | Preço Unitário (R$) | Quantidade | Total (R$) |')
+
+    preco_final = 0
+    soma_qtds = 0
+    pedidos = []
+    cardapio = {'100': ('Cachorro Quente', 1.20),
+                '101': ('Bauru Simples', 1.30),
+                '102': ('Bauru com Ovo', 1.50),
+                '103': ('Hamburger', 1.20),
+                '104': ('Cheeseburger', 1.30),
+                '105': ('Refrigerante', 1.00)}
+    for codigo, qtd in itens:
+        nome, valor = cardapio[codigo]
+        novo_item = True
+        for item in pedidos:
+            if item[1] == codigo:
+                item[3] += qtd
+                novo_item = False
+                break
+        if novo_item:
+            pedidos.append([nome, codigo, valor, qtd])
+
+    for pedido in pedidos:
+        nome, codigo, valor, qtd = pedido
+        if qtd != 0:
+            print(f'| {nome:<15}  | {codigo:<3}    | {valor:<2.2f}                |          {qtd:>1} |       {valor*qtd:>4.2f} |')
+            preco_final += valor*qtd
+            soma_qtds += qtd
+
+    print('|---------------------------------------------------------------------------|')
+    print(f'| Total Geral:                                    |         {soma_qtds:>2} |      {preco_final:>5.2f} |')
+    print('-----------------------------------------------------------------------------')
