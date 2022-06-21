@@ -36,7 +36,6 @@ def quantas_notas( lista_qnt_nota: list,valor:int, nota:int):
 
 def calcular_troco(valor: int):
     """Escreva aqui em baixo a sua solução"""
-<<<<<<< HEAD
 
     lista_qnt_nota = []
     valor = quantas_notas(lista_qnt_nota, valor, 100)
@@ -56,5 +55,3 @@ def calcular_troco(valor: int):
         print(f"'{lista_qnt_nota[0]} e {lista_qnt_nota[1]}'")
     if len(lista_qnt_nota) == 1:
         print(f"'{lista_qnt_nota[0]}'")
-=======
->>>>>>> main

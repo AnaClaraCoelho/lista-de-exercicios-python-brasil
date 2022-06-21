@@ -46,6 +46,34 @@ Gabarito da Prova:
     Total de Alunos: 2
 """
 
+def calcular_nota(prova):
+    gabarito = ('Nome', 'A', 'B', 'C', 'D', 'E', 'E', 'D', 'C', 'B', 'A')
+    soma_nota = 0
+    nome_do_aluno = ''
+    for resposta_correta, nota_prova in zip(gabarito,prova):
+        if resposta_correta == 'Nome':
+            nome_do_aluno = prova[0]
+        elif resposta_correta == nota_prova:
+            soma_nota += 1
+    return nome_do_aluno, soma_nota
+
 
 def corrigir(*provas):
     """Escreva aqui em baixo a sua solução"""
+    print('Aluno                 Nota')
+    total_de_notas = 0
+    min_nota = 99999
+    max_nota = -1
+    for prova in provas:
+        nome_do_aluno, soma_nota = calcular_nota(prova)
+        total_de_notas += soma_nota
+        if soma_nota > max_nota:
+            max_nota = soma_nota
+        if soma_nota < min_nota:
+            min_nota = soma_nota
+        print(f'{nome_do_aluno}                 {soma_nota}')
+    print('---------------------------')
+    print(f'Média geral: {total_de_notas/len(provas)}')
+    print(f'Maior nota: {max_nota}')
+    print(f'Menor nota: {min_nota}')
+    print(f'Total de Alunos: {len(provas)}')

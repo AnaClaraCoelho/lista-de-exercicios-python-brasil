@@ -21,3 +21,6 @@ Exemplo:
 
 def inverter_inteiro(numero):
     """Escreva aqui em baixo a sua solução"""
+    numero_str = str(numero)
+    numero_str_invertido = ''.join(reversed(numero_str))
+    return int(numero_str_invertido)
